@@ -1,0 +1,166 @@
++<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light blue background */
+            color: #2f6f82; /* Muted teal/blue text */
+        }
+
+        .profile-container {
+            margin-top: 50px;
+            background-color: #ffffff; /* White background for container */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 128, 128, 0.3); /* Soft teal shadow */
+        }
+
+        fieldset {
+            border: 2px solid #00bcd4; /* Bright blue border */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        legend {
+            color: #0097a7; /* Teal color */
+            font-weight: bold;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #006064; /* Dark teal label text */
+        }
+
+        .form-control {
+            background-color: #e0f7fa; /* Light blue input background */
+            color: #006064; /* Dark teal input text */
+            border: 1px solid #00acc1; /* Light teal border */
+        }
+
+        .form-control:focus {
+            border-color: #00bcd4; /* Brighter blue focus border */
+            box-shadow: 0 0 5px rgba(0, 128, 128, 0.5); /* Teal glow on focus */
+        }
+
+        .btn-custom {
+            background-color: #0097a7; /* Teal button background */
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #00796b; /* Darker teal on hover */
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #4f9a94; /* Muted teal background for secondary button */
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #006064; /* Darker teal on hover */
+            color: white;
+        }
+
+        /* Doctor's photo and bio styling */
+        .doctor-photo {
+            max-width: 150px;
+            border-radius: 50%;
+            border: 3px solid #0097a7;
+        }
+
+        .bio-details {
+            color: #00796b;
+        }
+
+        .availability-schedule {
+            color: #0097a7; /* Bright teal for schedule headers */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 profile-container">
+                <fieldset>
+                    <legend>Doctor Profile</legend>
+
+                    <!-- Bio Information -->
+                    <div class="bio-details">
+                        <h4>Dr. John Doe</h4>
+                        <p>Specialization: Cardiology</p>
+                        <p>Email: johndoe@hospital.com</p>
+                        <p>Phone: +123-456-7890</p>
+                    </div>
+
+                    <!-- Schedule Selection -->
+                    <fieldset class="mt-4">
+                        <legend class="availability-schedule">Set Your Availability</legend>
+                        
+                        <div class="form-group">
+                            <label for="morning">Morning (8 AM - 12 PM)</label>
+                            <select id="morning" class="form-control">
+                                <option value="">Select availability</option>
+                                <option value="available">Available</option>
+                                <option value="unavailable">Unavailable</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="afternoon">Afternoon (12 PM - 4 PM)</label>
+                            <select id="afternoon" class="form-control">
+                                <option value="">Select availability</option>
+                                <option value="available">Available</option>
+                                <option value="unavailable">Unavailable</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="evening">Evening (4 PM - 8 PM)</label>
+                            <select id="evening" class="form-control">
+                                <option value="">Select availability</option>
+                                <option value="available">Available</option>
+                                <option value="unavailable">Unavailable</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="night">Night (8 PM - 12 AM)</label>
+                            <select id="night" class="form-control">
+                                <option value="">Select availability</option>
+                                <option value="available">Available</option>
+                                <option value="unavailable">Unavailable</option>
+                            </select>
+                        </div>
+                    </fieldset><br>
+
+                    <!-- Submit and Reset Buttons -->
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-custom">Save Details</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <script>
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+        if (loggedInUser && loggedInUser.userType === 'doctor') {
+            document.getElementById('doctorName').innerText = loggedInUser.firstName + " " + loggedInUser.lastName;
+        } else {
+            window.location.href = 'log2.html';
+        }
+    </script>
+
+</body>
+
+</html>

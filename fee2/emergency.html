@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root {
+            --maincolor: #2ec8a6;
+            --secondcolor: #f8a803;
+            --thirdcolor: #f4ab01;
+            --textcolor: #4A5764;
+        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+    font-family: 'Inter', sans-serif;
+}
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+/* .right-icons{
+display: flex;
+align-items: center;
+}
+
+#menu-bars{
+
+display: initial;
+} */
+body {
+    margin: 0;
+    padding: 0;
+}
+header{
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.5rem 7%;
+width: 100%;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+z-index: 1000;
+background-color: white !important;
+
+}
+.logo{
+width: 150px;
+}
+.logo img{
+width: 100%;
+}
+.navbar a{
+color: var(--textcolor);
+font-size: 1.7rem;
+margin: 1rem;
+position: relative;
+transition: 0.5s;
+}
+.navbar a:hover{
+color: var(--maincolor);
+}
+
+.navbar a::after{
+content: "";
+background-color: var(--maincolor);
+width: 0;
+position: absolute;
+height: 0.2rem;
+left: 0;
+margin-top: 0.5rem;
+top: 100%;
+transition: 0.5s;
+}
+.navbar a:hover::after{
+width: 100%;
+}
+.aboutbtn{
+padding: 1.5rem 3rem;
+background-color: transparent;
+border: 1px solid var(--maincolor);
+margin-top: 0.5rem;
+cursor: pointer;
+font-size: 1.5rem;
+transition: 0.5s all;
+}
+.aboutbtn:hover{
+background-color: var(--secondcolor);
+color: white;
+border:none;
+padding: 1.5rem 3.5rem;
+}
+#menu-bars{
+color: var(--textcolor);
+font-size: 2.5rem;
+cursor: pointer;
+margin-right: 1rem;
+display: none;
+}
+#menu-bars:hover{
+color: var(--maincolor);
+}
+.right-icons .btn{
+
+padding: 1.2rem 2rem;
+font-size: 1.7rem;
+background: var(--maincolor);
+color: white;
+text-decoration: none;
+cursor: pointer;
+}
+.right-icons .btn:hover{
+background-color: var(--secondcolor);
+}
+.doctors-list {
+    margin-top: 1rem;
+    text-align: left;
+    display: none; /* Initially hidden */
+}
+.main-doctors{
+    padding: 2rem 7%;
+    background-image: url(images/backgroung-pattern-3.png);
+    background-color: #f5f5f5;
+    width: 100%;
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.doctors-heading{
+    font-size: 30px;
+    text-align: center;
+   margin: 4rem;
+   color: var(--maincolor);
+}
+.main-inner-doctor{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6rem;
+    
+}
+.doc-poster{
+    flex: 1 1 300px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+    overflow: hidden;
+    
+}
+.doc-poster img{
+    width: 100%;
+    border: 0.7rem solid var(--maincolor);
+}
+.doc-poster:hover img{
+    border-radius: 0 50px 0 0;
+}
+.doc-icons{
+    position: absolute;
+    left: -100%;
+    top: 10%;
+    transition: 0.5s;
+}
+.doc-poster:hover .doc-icons{
+    left: 5%;
+}
+
+.doc-icons i{
+    font-size: 2rem;
+    margin: 0.5rem;
+    border: 1px solid var(--secondcolor);
+    color: var(--maincolor);
+    padding: 1rem;
+    background-color: white;
+    cursor: pointer;
+    
+}
+.doc-icons i:hover{
+    background-color: white;
+    color: var(--secondcolor);
+    border-radius: 10px !important;
+    transform: scale(1.2);
+    border: 1px solid var(--maincolor);
+}
+.doc-poster::after{
+    content: "";
+    background: linear-gradient(0deg, #f5f5f5 50%, transparent);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    bottom: -200px;
+    transition: 0.5s;
+}
+.doc-poster:hover:after{
+    bottom: -100px;
+}
+
+
+
+.doc-details{
+ position: absolute;
+ text-align: center;
+ z-index: 2;
+ bottom: -30px;
+ left: 40%;
+
+}
+.doc-details h2{
+    color: black;
+    font-size: 25px;
+    padding: 2rem 0;
+}
+
+.doc-details i{
+    padding: 0.5rem;
+    font-size: 2.5rem;
+    color: var(--maincolor);
+    cursor: pointer;
+}
+.doc-details i:hover{
+    color: var(--secondcolor);
+    transform: scale(1.2);
+}
+
+.doc-poster:hover .doc-details{
+    bottom: 10px;
+}
+.main-footer {
+    padding: 4rem 7%;
+    background-color: var(--textcolor);
+    color: white;
+    text-align: center;
+}
+
+</style>
+</head>
+<body>
+<header>
+
+<div class="logo"><img src="images/logo3.png" alt=""></div>
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="#Home">About</a>
+    <a href="my.html">Service</a>
+    <a href="#Home">Gallery</a>
+    <a href="#Home">Blog</a>
+    <a href="#Home">Contact</a>
+</nav>
+
+<div class="right-icons">
+    <div id="menu-bars" class="fas fa-bars"></div>
+    <div class="btn">Make Appointment</div>
+</div>
+
+</header>
+<section class="main-home">
+<div class="home">
+<div class="home-left-content">
+ <span>Our Services</span> -->
+     <h2>We provide the best medical services</h2> -->
+    <p>Get expert treatment from experienced doctors across multiple specialties.</p>
+</div>
+</div> 
+</section>
+<section class="our-service">
+<div class="service-heading">
+<!-- <h2>Heart Specialists</h2> -->
+</div>
+<div class="main-services">
+
+<div class="main-doctors">
+    <div class="doctors-heading">
+        <h2>Our Heart Specialists</h2>
+    </div>
+
+    <div class="main-inner-doctor">
+        <div class="doc-poster">
+            <div class="doc-icons">
+                <i class="fa-solid fa-share"></i>
+                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <img src="images/team1.jpg" alt="">
+
+            <div class="doc-details">
+                <h2>Mr Joe</h2>
+                
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+
+        </div>
+
+        <div class="doc-poster">
+            <div class="doc-icons">
+                <i class="fa-solid fa-share"></i>
+                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <img src="images/team2.jpg" alt="">
+            <div class="doc-details">
+                <h2>Mr Joe</h2>
+                
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </div>
+
+        <div class="doc-poster">
+            <div class="doc-icons">
+                <i class="fa-solid fa-share"></i>
+                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <img src="images/team3.jpg" alt="">
+            <div class="doc-details">
+                <h2>Mr Joe</h2>
+                
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </div>
+
+        <div class="doc-poster">
+            <div class="doc-icons">
+                <i class="fa-solid fa-share"></i>
+                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <img src="images/team4.jpg" alt="">
+            <div class="doc-details">
+                <h2>Mr Joe</h2>
+                
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </div>
+
+        <div class="doc-poster">
+            <div class="doc-icons">
+                <i class="fa-solid fa-share"></i>
+                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <img src="images/team5.jpg" alt="">
+            <div class="doc-details">
+                <h2>Mr Joe</h2>
+                
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </div>
+
+        <div class="doc-poster">
+            <div class="doc-icons">
+                <i class="fa-solid fa-share"></i>
+                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <img src="images/team6.jpg" alt="">
+
+            <div class="doc-details">
+                <h2>Mr Joe</h2>
+                
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- our doctors ended -->
+<footer class="main-footer">
+<div class="footer-inner">
+<div class="footer-content">
+    <h1>Contact Us</h1>
+    <p>Phone: +123 456 789</p>
+    <p>Email: info@hospital.com</p>
+</div>
+</div>
+</footer>
+<script>
+function showDoctors(service) {
+const lists = document.querySelectorAll('.doctors-list');
+lists.forEach(list => {
+    if (list.id === service) {
+        list.style.display = list.style.display === 'none' ? 'block' : 'none';
+    } else {
+        list.style.display = 'none'; // Hide other lists
+    }
+});
+}
+</script>
+</body>
+</html>

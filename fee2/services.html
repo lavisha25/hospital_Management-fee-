@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root {
+            --maincolor: #2ec8a6;
+            --secondcolor: #f8a803;
+            --thirdcolor: #f4ab01;
+            --textcolor: #4A5764;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: all .2s linear;
+            font-family: 'Inter', sans-serif;
+        }
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        /* .right-icons{
+        display: flex;
+        align-items: center;
+    }
+
+    #menu-bars{
+        
+        display: initial;
+    } */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 7%;
+    width: 100%;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    z-index: 1000;
+    background-color: white !important;
+
+}
+.logo{
+    width: 150px;
+}
+.logo img{
+    width: 100%;
+}
+.navbar a{
+    color: var(--textcolor);
+    font-size: 1.7rem;
+    margin: 1rem;
+    position: relative;
+    transition: 0.5s;
+}
+.navbar a:hover{
+    color: var(--maincolor);
+}
+
+.navbar a::after{
+    content: "";
+    background-color: var(--maincolor);
+    width: 0;
+    position: absolute;
+    height: 0.2rem;
+    left: 0;
+    margin-top: 0.5rem;
+    top: 100%;
+    transition: 0.5s;
+}
+.navbar a:hover::after{
+    width: 100%;
+}
+.aboutbtn{
+    padding: 1.5rem 3rem;
+    background-color: transparent;
+    border: 1px solid var(--maincolor);
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: 0.5s all;
+}
+.aboutbtn:hover{
+    background-color: var(--secondcolor);
+    color: white;
+    border:none;
+    padding: 1.5rem 3.5rem;
+}
+#menu-bars{
+    color: var(--textcolor);
+    font-size: 2.5rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    display: none;
+}
+#menu-bars:hover{
+    color: var(--maincolor);
+}
+.right-icons .btn{
+
+    padding: 1.2rem 2rem;
+    font-size: 1.7rem;
+    background: var(--maincolor);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.right-icons .btn:hover{
+    background-color: var(--secondcolor);
+}
+
+        .main-home {
+            padding: 6rem 7%;
+            background-image: url('images/blurbg1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .home-left-content h2 {
+            font-size: 4rem;
+            color: var(--textcolor);
+        }
+        .home-left-content p {
+            font-size: 1.5rem;
+            color: var(--textcolor);
+        }
+        .our-service {
+            padding: 6rem 7%;
+            text-align: center;
+        }
+        .service-heading h2 {
+            color: var(--maincolor);
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+        .main-services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        .inner-services {
+            flex: 1 1 30%;
+            padding: 2rem;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+            transition: 0.5s;
+            position: relative;
+        }
+        .inner-services:hover {
+            transform: translateY(-10px);
+            background-color: #f5f5f5;
+        }
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 1px solid var(--maincolor);
+            background-color: #f5f5f5;
+        }
+        .service-icon i {
+            font-size: 3rem;
+            color: var(--maincolor);
+        }
+        .inner-services h3 {
+            font-size: 2rem;
+            padding-top: 2rem;
+        }
+        .inner-services p {
+            font-size: 1.5rem;
+            padding: 1.5rem 0;
+            line-height: 2.5rem;
+        }
+        .doctors-list {
+            margin-top: 1rem;
+            text-align: left;
+            display: none; /* Initially hidden */
+        }
+        .main-footer {
+            padding: 4rem 7%;
+            background-color: var(--textcolor);
+            color: white;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        
+        <div class="logo"><img src="images/logo3.png" alt=""></div>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="#Home">About</a>
+            <a href="my.html">Service</a>
+            <a href="#Home">Gallery</a>
+            <a href="#Home">Blog</a>
+            <a href="#Home">Contact</a>
+        </nav>
+
+        <div class="right-icons">
+            <div id="menu-bars" class="fas fa-bars"></div>
+            <div class="btn">Make Appointment</div>
+        </div>
+
+    </header>
+<section class="main-home">
+    <div class="home">
+        <div class="home-left-content">
+            <!-- <span>Our Services</span> -->
+            <h2>We provide the best medical services</h2>
+            <p>Get expert treatment from experienced doctors across multiple specialties.</p>
+        </div>
+    </div>
+</section>
+<section class="our-service">
+    <div class="service-heading">
+        <h2>Medical Services</h2>
+    </div>
+    <div class="main-services">
+        <!-- Heart Service -->
+        <div class="inner-services">
+            <div class="service-icon"  style="padding-top: 10px;">
+                <i class="fas fa-heartbeat"  style="font-size: 48px;text-align: center;"></i>
+            </div>
+            <h3>Cardiology (Cath Lab)</h3>
+
+            <p>Our world class infrastructure and services enable us to provide the best quality cardiac care at the affordable charges</p>
+            <button onclick="showDoctors('heart')">See Doctors</button>
+            <div id="heart" class="doctors-list">
+                <h4>Doctors for Heart:</h4>
+                <ul>
+                    <!-- <li>Dr. A. Heart</li> -->
+                    <a href="cardio.html"><li>Dr. A. Heart</li></a>
+                    <a href="cardio.html"><li>Dr. B. Cardiologist</li></a>
+                    <a href="cardio.html"><li>Dr. C. Vascular</li></a>
+                </ul>
+            </div>
+        </div>
+        <!-- Eyes Service -->
+        <div class="inner-services">
+            <div class="service-icon" style="padding-top: 10px;">
+                <i class="fas fa-brain" style="font-size: 48px;text-align: center;"></i>
+            </div>
+            <h3>Neurology</h3>
+            <p>The Departments of Neurology deliver expert care to thousands annually, including those with rare conditions, through innovative research and trials.</p>
+            <button onclick="showDoctors('eyes')">See Doctors</button>
+            <div id="eyes" class="doctors-list">
+                <h4>Doctors for Eyes:</h4>
+                <ul>
+                    <a href="cardio.html"><li>Dr. A. Heart</li></a>
+                    <a href="cardio.html"><li>Dr. B. Cardiologist</li></a>
+                    <a href="cardio.html"><li>Dr. C. Vascular</li></a>
+                </ul>
+            </div>
+        </div>
+        <!-- Gyno Service -->
+        <div class="inner-services">
+            <div class="service-icon"  style="padding-top: 10px;">
+                <i class="fa-solid fa-wheelchair-move"  style="font-size: 48px;text-align: center;"></i>
+            </div>
+            <h3>Physiotherapy and Rehabilitation</h3>
+            <p>Hospital is a physiotherapy and rehabilitation facility dedicated to high-quality,emphasizing patient satisfaction and personalized attention.</p>
+            <button onclick="showDoctors('gyno')">See Doctors</button>
+            <div id="gyno" class="doctors-list">
+                <h4>Doctors for Gyno:</h4>
+                <ul>
+                    <a href="cardio.html"><li>Dr. A. Heart</li></a>
+                    <a href="cardio.html"><li>Dr. B. Cardiologist</li></a>
+                    <a href="cardio.html"><li>Dr. C. Vascular</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="inner-services">
+            <div class="service-icon"  style="padding-top: 10px;">
+                <i class="fa-solid fa-user-doctor"  style="font-size: 48px;text-align: center;"></i>
+            </div>
+            <h3>24 Hour Laboratory</h3>
+            <p>We have partnered with Lal Path Labs to bring the most comprehensive lab tests to the people, at the most competitive rates.</p>
+            <button onclick="showDoctors('gyno')">See Doctors</button>
+            <div id="gyno" class="doctors-list">
+                <h4>Doctors for Gyno:</h4>
+                <ul>
+                    <a href="cardio.html"><li>Dr. A. Heart</li></a>
+                    <a href="cardio.html"><li>Dr. B. Cardiologist</li></a>
+                    <a href="cardio.html"><li>Dr. C. Vascular</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="inner-services">
+            <div class="service-icon"  style="padding-top: 10px;">
+                <i class="fas fa-female"  style="font-size: 48px;text-align: center;"></i>
+            </div>
+            <h3>Advanced Bariatric (Weight Loss) & Metabolic Surgery</h3>
+            <p>Our hospital is fully equipped with advanced technology for abdominal and gynecological laparoscopy, as well as bariatric surgery.</p>
+            <button onclick="showDoctors('gyno')">See Doctors</button>
+            <div id="gyno" class="doctors-list">
+                <h4>Doctors for Gyno:</h4>
+                <ul>
+                    <a href="cardio.html"><li>Dr. A. Heart</li></a>
+                    <a href="cardio.html"><li>Dr. B. Cardiologist</li></a>
+                    <a href="cardio.html"><li>Dr. C. Vascular</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="inner-services">
+            <div class="service-icon"  style="padding-top: 10px;">
+                <i class="fa-solid fa-notes-medical"  style="font-size: 48px;text-align: center;"></i>
+            </div>
+            <h3>Intensive Care Unit</h3>
+            <p>Our hospital has the most advanced 33 bedded Intensive Care Unit (for Cardiac and other serious non-cardiac patients) with expert supervision.</p>
+            <button onclick="showDoctors('gyno')">See Doctors</button>
+            <div id="gyno" class="doctors-list">
+                <h4>Doctors for Gyno:</h4>
+                <ul>
+                    <a href="cardio.html"><li>Dr. A. Heart</li></a>
+                    <a href="cardio.html"><li>Dr. B. Cardiologist</li></a>
+                    <a href="cardio.html"><li>Dr. C. Vascular</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="main-footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+            <h1>Contact Us</h1>
+            <p>Phone: +123 456 789</p>
+            <p>Email: info@hospital.com</p>
+        </div>
+    </div>
+</footer>
+<script>
+    function showDoctors(service) {
+        const lists = document.querySelectorAll('.doctors-list');
+        lists.forEach(list => {
+            if (list.id === service) {
+                list.style.display = list.style.display === 'none' ? 'block' : 'none';
+            } else {
+                list.style.display = 'none'; // Hide other lists
+            }
+        });
+    }
+</script>
+</body>
+</html>

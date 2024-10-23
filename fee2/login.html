@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup/Login Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('images/loginbg.jpeg') ;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #f4f4f4; /* Light grey background */
+            color: #333; /* Dark text */
+        }
+        .signup-container {
+            margin-top: 20px;
+            background-color: #ffffff; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border: 2px solid #2ec8a6; /* Teal border */
+            padding: 15px;
+            border-radius: 10px;
+        }
+        legend {
+            color: #2ec8a6; /* Teal text for legend */
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #2ec8a6; /* Teal text for labels */
+        }
+        .form-control {
+            background-color: #ffffff; /* White input background */
+            color: #333; /* Dark text */
+            border: 1px solid #2ec8a6; /* Teal border */
+        }
+        .form-control:focus {
+            border-color: #2ec8a6; /* Teal border on focus */
+            box-shadow: 0 0 5px rgba(46, 200, 166, 0.5); /* Teal glow effect */
+        }
+        .btn-custom {
+            background-color: #2ec8a6; /* Teal button */
+            color: white; /* White text */
+        }
+        .btn-custom:hover {
+            background-color: #1da493; /* Darker teal on hover */
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #e0e0e0; /* Light grey for secondary button */
+            color: #333; /* Dark text */
+        }
+        .btn-secondary:hover {
+            background-color: #d0d0d0; /* Slightly darker on hover */
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 signup-container">
+                <form name="signupform" id="signupform" onsubmit="return handleSignup(event)">
+                    <fieldset>
+                        <legend>Signup Form</legend>
+                        <div class="form-group">
+                            <label for="userType">I am a:</label>
+                            <select id="userType" class="form-control" required onchange="toggleUserFields()">
+                                <option value="">Select</option>
+                                <option value="patient">Patient</option>
+                                <option value="doctor">Doctor</option>
+                            </select>
+                        </div>
+
+                        <!-- Patient Fields -->
+                        <div id="customerFields">
+                            <div class="form-group">
+                                <label for="fname">First Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="required" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="required" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="required" required>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-custom">Sign Up</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                            <div class="form-group text-center">
+                                <a href="#" onclick="showLoginForm()" style="color: #2ec8a6;">Already have an account? Login</a>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Fields -->
+                        <div id="staffFields" class="hidden">
+                            <div class="form-group">
+                                <label for="staffId">Doctor ID</label>
+                                <input type="text" class="form-control" id="staffId" name="staffId" placeholder="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="staffEmail">Email</label>
+                                <input type="email" class="form-control" id="staffEmail" name="staffEmail" placeholder="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="staffPassword">Password</label>
+                                <input type="password" class="form-control" id="staffPassword" name="staffPassword" placeholder="required">
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-custom">Sign Up</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <form name="loginform" id="loginform" class="hidden" onsubmit="return handleLogin(event)">
+                    <fieldset>
+                        <legend>Login Form</legend>
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" name="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" name="loginPassword" required>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-custom">Login</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <a href="#" onclick="showSignupForm()" style="color: #2ec8a6;">Don't have an account? Signup</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleUserFields() {
+            const userType = document.getElementById('userType').value;
+            const customerFields = document.getElementById('customerFields');
+            const staffFields = document.getElementById('staffFields');
+            
+            customerFields.classList.toggle('hidden', userType === 'doctor');
+            staffFields.classList.toggle('hidden', userType !== 'doctor');
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const userType = document.getElementById('userType').value;
+            const username = userType === 'patient' ? document.getElementById('email').value : document.getElementById('staffEmail').value;
+            const password = userType === 'patient' ? document.getElementById('password').value : document.getElementById('staffPassword').value;
+            const firstName = userType === 'patient' ? document.getElementById('fname').value : document.getElementById('staffId').value; // Just an example
+            const lastName = userType === 'patient' ? document.getElementById('lname').value : ''; // Optional for doctors
+
+            // Retrieve existing user data
+            const userData = JSON.parse(localStorage.getItem('userData')) || { patients: [], doctors: [] };
+
+            // Check if the user already exists
+            const existingUser = userType === 'patient' 
+                ? userData.patients.find(user => user.username === username) 
+                : userData.doctors.find(user => user.username === username);
+
+            if (existingUser) {
+                alert('Username already exists!');
+                return;
+            }
+
+            // Create new user object
+            const newUser = { username, password, firstName, lastName };
+
+            // Add to the correct array
+            if (userType === 'patient') {
+                userData.patients.push(newUser);
+            } else {
+                userData.doctors.push(newUser);
+            }
+
+            // Update local storage
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            alert('Signup successful!');
+            showLoginForm(); // Switch to login form after successful signup
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const userData = JSON.parse(localStorage.getItem('userData')) || { patients: [], doctors: [] };
+            const existingUser = userData.patients.find(user => user.username === username) || 
+                                userData.doctors.find(user => user.username === username);
+
+            if (!existingUser || existingUser.password !== password) {
+                alert('Wrong username or password!');
+                return;
+            }
+
+            alert('Login successful!');
+            console.log("Redirecting to:", existingUser.firstName ? 'getintouch.html' : 'doc.html');
+            window.location.href = existingUser.firstName ? 'getintouch.html' : 'doc.html'; // Redirect based on user type
+        }
+
+        function showLoginForm() {
+            document.getElementById('signupform').style.display = 'none';
+            document.getElementById('loginform').style.display = 'block';
+        }
+
+        function showSignupForm() {
+            document.getElementById('loginform').style.display = 'none';
+            document.getElementById('signupform').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
